@@ -1,4 +1,6 @@
-module;                                                                                     // Global fragment (not part of the module)
+module;
+#include <ostream>
+#include <istream>                                                                                     // Global fragment (not part of the module)
   // Empty
 
 
@@ -287,7 +289,7 @@ _gList_array_size--;
       ///
       /// Behind the scenes, std::vector::erase() shifts to the left everything after the insertion point, just like you did for the
       /// array above.
-_gList_vector.erase(_gList_vector.begin() + offsetFromTop);
+_gList_vector.erase(std::next( _gList_vector.begin(),  offsetFromTop) );
     /////////////////////// END-TO-DO (9) ////////////////////////////
   } // Part 2 - Remove from vector
 

@@ -1,4 +1,5 @@
-module;                                                                         // Global fragment (not part of the module)
+module;
+#include <ostream>                                                                         // Global fragment (not part of the module)
   // Empty
 
 

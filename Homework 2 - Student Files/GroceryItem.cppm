@@ -95,6 +95,8 @@ struct std::formatter<GroceryItem> : std::formatter<std::string>
   auto format( const GroceryItem & item, auto & ctx ) const
   {
     ///////////////////////// TO-DO (1) //////////////////////////////
+    return std::format(ctx, R"({{"upcCode": "{}", "brandName": "{}", "productName": "{}", "price": {:.2f}}})",
+                       item.upcCode(), item.brandName(), item.productName(), item.price());
 
     /////////////////////// END-TO-DO (1) ////////////////////////////
   }

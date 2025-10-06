@@ -108,7 +108,15 @@ struct std::formatter<GroceryList> : std::formatter<std::string>
     ///////////////////////// TO-DO (1) //////////////////////////////
       /// For each grocery item in the grocery list, accumulate a string by appending the current grocery item to the back of the
       /// string.  Each grocery item is appended as a new line and preceded with its index (aka offset from top)
+    std::string formattedList;
+    std::size_t index = 0;
 
+    for (const auto & item : groceryList._gList_vector) // Assuming _gList_vector is the primary container
+    {
+      formattedList += std::format("{:>3}. {}\n", index++, item);
+    }
+
+    return formatter<string>::format(formattedList, ctx);
     /////////////////////// END-TO-DO (1) ////////////////////////////
   }
 };

@@ -119,6 +119,56 @@ int main()
      /// several (more than two) lists. Have some fun with it!  The purpose is to show me you, as a GroceryList class consumer
      /// (i.e., the client) understand how to *use* the GroceryList.
 
+     
+// Let's plan a holiday meal for Thanksgiving
+GroceryList mainCourse = { { "turkey", "Organic" }, 
+                           { "stuffing" } };
+mainCourse.insert({ "mashed potatoes" }, GroceryList::TOP);
+mainCourse.insert({ "green beans" }, 2); // insert at index 2
+
+GroceryList desserts = { { "pumpkin pie" }, 
+                         { "apple pie" } };
+desserts.insert({ "whipped cream" }, GroceryList::BOTTOM);
+
+GroceryList beverages = { { "cranberry juice" }, 
+                          { "apple cider" } };
+
+std::cout << "Main Course:" << mainCourse << "\n\n";
+std::cout << "Desserts:" << desserts << "\n\n";
+std::cout << "Beverages:" << beverages << "\n\n";
+
+// Combine the lists
+GroceryList holidayList = mainCourse;
+holidayList += desserts;
+holidayList += beverages;
+
+std::cout << "Holiday List:" << holidayList << "\n\n";
+
+// Remove an item from the middle
+holidayList.remove({ "stuffing" });
+
+std::cout << "Updated Holiday List:" << holidayList << "\n\n";
+
+// Compare lists
+GroceryList shoppingList = holidayList;
+std::cout << "Are holidayList and shoppingList equal? " << (holidayList == shoppingList ? "Yes" : "No") << "\n\n";
+
+// Create an in-memory input stream to test extraction operator
+std::istringstream holidayListStream(R"( "",   "Organic",  "turkey",          0.0
+                                          "",   "",         "mashed potatoes", 0.0
+                                          "",   "",         "green beans",    0.0
+                                          "",   "",         "pumpkin pie",    0.0
+                                          "",   "",         "apple pie",     0.0
+                                          "",   "",         "whipped cream",  0.0
+                                          "",   "",         "cranberry juice",0.0
+                                          "",   "",         "apple cider",    0.0
+                                        )");
+
+GroceryList extractedList;
+holidayListStream >> extractedList;
+
+std::cout << "Extracted List:" << extractedList << "\n\n";
+std::cout << "Are holidayList and extractedList equal? " << (holidayList == extractedList ? "Yes" : "No") << "\n\n";
     /////////////////////// END-TO-DO (1) ////////////////////////////
   }
 
